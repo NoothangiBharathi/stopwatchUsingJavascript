@@ -3,156 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Stopwatch using only in javascript </title>
-    <style>
-        *{
+    <title> Stopwatch only in js </title>
+     <style>
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         }
-    </style>
+        </style>
 </head>
 <body>
-    <script>
+    
+        <script> 
         var container = document.createElement('div');
         container.classList.add("container");
         container.style.width = "100%";
         container.style.minHeight = "100vh";
-        container.style.background = "lightpink";
-        container.style.color ="white";
+        container.style.background = " pink";
+        container.style.color = "white";
         document.body.appendChild(container);
 
+
+
         var container2 = document.createElement('div');
-        container2.classList.add("container2");
+        container2.classList.add("container");
         container2.style.width = "800px";
-        container2.style.height = "200px";
+        container2.style.height = "180px";
         container2.style.position = "absolute";
         container2.style.top = "50%";
         container2.style.left = "50%";
-        container2.style.transform = "traslate(-50%,-%0%)";
+        container2.style.transform = "translate(-50%,-50%)";
         container.appendChild(container2);
 
 
-        var container2After = document.createElement('div');
-        containerAfter.style.content = '""';
-        container2After.style.height = "200px";
-        container2After.style.width="200px";
-        container2After.style.background = "aqua";
+
+         var container2After = document.createElement('div');
+        container2After.style.content = '""';
+        container2After.style.width = "180px";
+        container2After.style.height = "180px";
+        container2After.style.background = "pink";
         container2After.style.borderRadius = "50%";
-        container2After.style.position="absolute";
-        container2After.style.right="-30px";
-        container2After.style.bottom ="-50px";
+        container2After.style.position = "absolute";
+        container2After.style.right = "-30px";
+        container2After.style.bottom = "-50px";
         container2After.style.zIndex = "-1";
         container2.appendChild(container2After);
 
 
+          var container2Before = document.createElement("div");
+        container2Before.style.content = '""';
+        container2Before.style.width = "180px";
+        container2Before.style.height = "180px";
+         container2Before.style.borderRadius = "5px";
+        container2Before.style.position = "absolute";
+        container2Before.style.left = "-50px";
+        container2Before.style.top = "-50px";
+        container2Before.style.zIndex = "-1";
+        container2.appendChild(container2Before);
+
+
+
+
+
         
+        var stopwatch = document.createElement("div");
+        stopwatch.classList.add("stopwatch");
+        stopwatch.style.width = "100%";
+        stopwatch.style.height = "100%";
+        stopwatch.style.background = "rgba(235,0,255,0.11)";
+        stopwatch.style.borderRadius = "10px";
+        stopwatch.style.display = "flex";
+        stopwatch.style.alignItems = "center";
+        stopwatch.style.justifyContent = "center";
+        stopwatch.style.backdropFilter = "blur(40px)";
+        container2.appendChild(stopwatch);
 
 
-      var clock = document.createElement("div");
-        clock.classList.add("clock");
-        clock.style.width = "100%";
-        clock.style.height = "100%";
-        clock.style.background = "rgba(235,0,255,0.11)";
-        clock.style.borderRadius = "10px";
-        clock.style.display = "flex";
-        clock.style.alignItems = "center";
-        clock.style.justifyContent = "center";
-        clock.style.backdropFilter = "blur(40px)";
-        container.appendChild(clock);
+
 
         var span = document.createElement("span");
-        span.setAttribute("id", "hrs");
+        span.setAttribute("id", "hours");
         span.innerText = "00";
         span.style.fontSize = "80px";
         span.style.width = "110px";
         span.style.display = "inline-block";
         span.style.textAlign = "center";
         span.style.position = "relative";
-        clock.appendChild(span);
+        stopwatch.appendChild(span);
+
+
 
         var labelHours = document.createElement("div");
-        labelHours.innerText = "Hours";
+        labelHours.innerText = "Start";
         labelHours.style.fontSize = "24px";
         labelHours.style.textAlign = "center";
         labelHours.style.position = "absolute";
         labelHours.style.bottom = "-30px";
         labelHours.style.left = "-18%";
         labelHours.style.width = "100%";
-        clock.appendChild(labelHours);
+        stopwatch.appendChild(labelHours);
 
 
-          var span4 = document.createElement("span");
+
+        var span4 = document.createElement("span");
         span4.innerHTML = ":";
         span4.style.fontSize = "80px";
-        clock.appendChild(span4);
+        stopwatch.appendChild(span4);
 
         var span2 = document.createElement("span");
-        span2.setAttribute("id", "mins");
+        span2.setAttribute("id", "minutes");
         span2.innerText = "00";
         span2.style.fontSize = "80px";
         span2.style.width = "110px";
         span2.style.display = "inline-block";
         span2.style.textAlign = "center";
         span2.style.position = "relative";
-        clock.appendChild(span2);
+        stopwatch.appendChild(span2);
+
+
+
 
         var labelMinutes = document.createElement("div");
-        labelMinutes.innerText = "Minutes";
+        labelMinutes.innerText = "Stop";
         labelMinutes.style.fontSize = "24px";
         labelMinutes.style.textAlign = "center";
         labelMinutes.style.position = "absolute";
         labelMinutes.style.bottom = "-30px";
         labelMinutes.style.left = "-1%";
         labelMinutes.style.width = "100%";
-        clock.appendChild(labelMinutes);
+        stopwatch.appendChild(labelMinutes);
+
+
+
 
         var span5 = document.createElement("span");
         span5.innerHTML = ":";
         span5.style.fontSize = "80px";
-        clock.appendChild(span5);
+        stopwatch.appendChild(span5);
 
-var span3 = document.createElement("span");
-        span3.setAttribute("id", "secs");
+        var span3 = document.createElement("span");
+        span3.setAttribute("id", "seconds");
         span3.innerText = "00";
         span3.style.fontSize = "80px";
         span3.style.width = "110px";
         span3.style.display = "inline-block";
         span3.style.textAlign = "center";
         span3.style.position = "relative";
-        clock.appendChild(span3);
+        stopwatch.appendChild(span3);
+
+
 
         var labelSeconds = document.createElement("div");
-        labelSeconds.innerText = "Seconds";
+        labelSeconds.innerText = "Reset";
         labelSeconds.style.fontSize = "24px";
         labelSeconds.style.textAlign = "center";
         labelSeconds.style.position = "absolute";
         labelSeconds.style.bottom = "-30px";
         labelSeconds.style.right = "-17%";
         labelSeconds.style.width = "100%";
-        clock.appendChild(labelSeconds);
+        stopwatch.appendChild(labelSeconds);
 
 
-        let hrs = document.getElementById("hrs");
-        let mins = document.getElementById("mins");
-        let secs = document.getElementById("secs");
 
-        setInterval(() =>{
-            let currentTime = new Date();
-            hrs.innerHTML = (currentTime.getHours()< 10 ? "0":"") + currentTime.getHours();
-            mins.innerHTML = (currentTime.getMinutes()< 10 ? "0":"") + currentTime.getMinutes();
-            secs.innerHTML = (currentTime.getSeconds()< 10 ? "0":"") + currentTime.getSeconds();
-        },1000);
-       
+ 
 
 
 
 
+         let h = hours < 10 ? "0":"" + hours : hours;
+         let m = minutes < 10 ? "0":"" + minutes : minutes;
+         let s = seconds < 10 ? "0":"" + seconds : seconds;
+
+        var start = document.getElementById("start");
+        var stop = document.getElementById("stop");
+        var reset = document.getElementById("reset");
 
 
 
 
-    </script>
-</body>
+         let hours = 0;
+         let minutes = 0;
+         let seconds = 0;
+         let interval;
+
+
+
+            const spanHours = document.getElementById("hours");
+            const spanMinutes = document.getElementById("minutes");
+            const spanSeconds = document.getElementById("seconds");
+
+
+
+             function startStopwatch() {
+        interval = setInterval(updateStopwatch, 1000); // Update every second (1000ms)
+    }
+
+
+
+    function stopStopwatch() {
+        clearInterval(interval);
+    }
+
+
+         function resetStopwatch() {
+        clearInterval(interval);
+        hours = 0;
+        minutes = 0;
+        seconds = 0;
+        updateDisplay();
+    }
+
+
+
+     function updateStopwatch() {
+        seconds++;
+        if (seconds === 60) {
+            seconds = 0;
+            minutes++;
+        }
+        if (minutes === 60) {
+            minutes = 0;
+            hours++;
+        }
+        updateDisplay();
+    }
+
+
+
+
+     function updateDisplay() {
+        spanHours.innerText = formatTime(hours);
+        spanMinutes.innerText = formatTime(minutes);
+        spanSeconds.innerText = formatTime(seconds);
+    }
+
+
+
+
+
+     function formatTime(time) {
+        return time < 10 ? "0" + time : time;
+    }
+
+    // Event listeners for the buttons
+    const startButton = document.createElement("button");
+    startButton.innerText = "Start";
+    startButton.onclick = startStopwatch;
+    labelHours.appendChild(startButton);
+
+    const stopButton = document.createElement("button");
+    stopButton.innerText = "Stop";
+    stopButton.onclick = stopStopwatch;
+    labelMinutes.appendChild(stopButton);
+
+    const resetButton = document.createElement("button");
+    resetButton.innerText = "Reset";
+    resetButton.onclick = resetStopwatch;
+    labelSeconds.appendChild(resetButton);
+
+
+
+
+
+            </script>
+    </body>
 </html>
